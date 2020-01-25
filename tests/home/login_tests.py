@@ -4,6 +4,10 @@ from pages.home.login_page import LoginPage
 import unittest
 
 class LoginTests(unittest.TestCase):
+    """
+    py.test -v -s tests/home/login_tests.py
+
+    """
 
     def test_validLogin(self):
         baseURL = "https://letskodeit.teachable.com/"
@@ -21,3 +25,5 @@ class LoginTests(unittest.TestCase):
             print("Login Successful")
         else:
             print("Login Failed")
+
+        driver.quit()
