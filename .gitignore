@@ -37,6 +37,8 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+# Screenshots
+screenshots/*.png
 
 # Unit test / coverage reports
 htmlcov/

@@ -7,11 +7,13 @@ It provides functionality to assert the result
 Example:
     self.check_point.markFinal("Test Name", result, "Message")
 """
+from traceback import print_stack
+
 import utilities.custom_logger as cl
 import logging
 from base.selenium_driver import SeleniumDriver
 
-class TestStatus(SeleniumDriver):
+class TstStatus(SeleniumDriver):
 
     log = cl.customLogger(logging.INFO)
 
@@ -19,7 +21,7 @@ class TestStatus(SeleniumDriver):
         """
         Inits CheckPoint class
         """
-        super(TestStatus, self).__init__(driver)
+        super(TstStatus, self).__init__(driver)
         self.resultList = []
 
     def setResult(self, result, resultMessage):
@@ -31,12 +33,16 @@ class TestStatus(SeleniumDriver):
                 else:
                     self.resultList.append("FAIL")
                     self.log.error("### VERIFICATION FAILED :: + " + resultMessage)
+                    self.screenShot(resultMessage)
             else:
                 self.resultList.append("FAIL")
                 self.log.error("### VERIFICATION FAILED :: + " + resultMessage)
+                self.screenShot(resultMessage)
         except:
             self.resultList.append("FAIL")
             self.log.error("### Exception Occurred !!!")
+            self.screenShot(resultMessage)
+            print_stack()
 
     def mark(self, result, resultMessage):
         """
