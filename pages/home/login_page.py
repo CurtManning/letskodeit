@@ -33,3 +33,11 @@ class LoginPage(SeleniumDriver):
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
+
+    def verifyLoginSuccessful(self):
+        result = self.isElementPresent("//div[@id='navbar']//img[@class='gravatar']",
+                                       locatorType="xpath")
+        return result
+
+    def verifyLoginFailed(self):
+        print("Test")
