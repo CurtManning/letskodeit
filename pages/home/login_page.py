@@ -1,8 +1,8 @@
-from base.selenium_driver import SeleniumDriver
 import utilities.custom_logger as cl
 import logging
+from base.basepage import BasePage
 
-class LoginPage(SeleniumDriver):
+class LoginPage(BasePage):
 
     log = cl.customLogger(logging.DEBUG)
 
@@ -51,12 +51,9 @@ class LoginPage(SeleniumDriver):
         passwordField = self.getElement(locator=self._password_field)
         passwordField.clear()
 
-    def verifyTitle(self):
+    def verifyLoginTitle(self):
         title = "Google"
         # title = "Let's Kode It"
-        if title in self.getTitle():
-            return True
-        else:
-            return False
+        return self.verifyLoginTitle(title)
 
 
