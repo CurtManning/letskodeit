@@ -28,8 +28,9 @@ class LoginPage(SeleniumDriver):
     def clickLoginButton(self):
         self.elementClick(self._login_button, locatorType="name")
 
-    def login(self, email, password):
+    def login(self, email="", password=""):
         self.clickLoginLink()
+        self.clearLoginFields()
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
@@ -40,4 +41,14 @@ class LoginPage(SeleniumDriver):
         return result
 
     def verifyLoginFailed(self):
-        print("Test")
+        result = self.isElementPresent("//div[contains(text(),'Invalid email or password')]",
+                                       locatorType="xpath")
+        return result
+
+    def clearLoginFields(self):
+        emailField = self.getElement(locator=self._email_field)
+        emailField.clear()
+        passwordField = self.getElement(locator=self._password_field)
+        passwordField.clear()
+
+
