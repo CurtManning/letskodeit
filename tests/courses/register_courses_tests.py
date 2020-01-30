@@ -5,6 +5,10 @@ import pytest
 
 @pytest.mark.usefixtures("oneTimeSetUp", "setUp")
 class RegisterCoursesTests(unittest.TestCase):
+    """
+    py.test -v -s tests/courses/register_courses_tests.py --browser firefox
+
+    """
 
     @pytest.fixture(autouse=True)
     def objectSetup(self, oneTimeSetUp):

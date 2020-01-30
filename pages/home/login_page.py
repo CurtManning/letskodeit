@@ -1,4 +1,5 @@
 import utilities.custom_logger as cl
+
 import logging
 from base.basepage import BasePage
 
@@ -46,14 +47,16 @@ class LoginPage(BasePage):
         return result
 
     def clearLoginFields(self):
-        emailField = self.getElement(locator=self._email_field)
-        emailField.clear()
-        passwordField = self.getElement(locator=self._password_field)
-        passwordField.clear()
+        # emailField = self.getElement(locator=self._email_field)
+        # emailField.clear()
+        self.clearField(locator=self._password_field)
+        self.clearField(locator=self._password_field)
+        # passwordField = self.getElement(locator=self._password_field)
+        # passwordField.clear()
 
     def verifyLoginTitle(self):
         title = "Google"
         # title = "Let's Kode It"
-        return self.verifyLoginTitle(title)
+        return self.getTitle(title)
 
 
