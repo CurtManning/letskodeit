@@ -11,8 +11,8 @@ class NavigationPage(BasePage):
         self.driver = driver
 
     # Locators
-    _my_courses = "My Courses"
-    _all_courses = "All Courses"
+    _my_courses = "All Courses"
+    _all_courses = "My Courses"
     _practice = "Practice"
     _user_settings_icon = "//div[@id='navbar']//li[@class='dropdown']"
 
@@ -29,6 +29,4 @@ class NavigationPage(BasePage):
     def navigateToUserSettings(self):
         userSettingsElement = self.waitForElement(locator=self._user_settings_icon,
                                       locatorType="xpath", pollFrequency=1)
-        #self.elementClick(element=userSettingsElement)
-        self.elementClick(locator=self._user_settings_icon,
-                                      locatorType="xpath")
+        self.elementClick(element=userSettingsElement)

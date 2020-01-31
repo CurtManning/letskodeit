@@ -44,12 +44,13 @@ class WebDriverFactory():
             # Set ie driver
             driver = webdriver.Ie()
         elif self.browser == "firefox":
-            driver = webdriver.Firefox(executable_path="C:\\Users\\curtmanning\\selenium\\geckodriver.exe")
+            driver = webdriver.Firefox(executable_path="C:\\Users\\CurtA\\selenium\\geckodriver.exe")
         elif self.browser == "chrome":
             # Set chrome driver
-            driverLocation = "C:\\Users\\curtmanning\\selenium\\chromedriver.exe"
-            os.environ["webdriver.chrome.driver"] = driverLocation
-            driver = webdriver.Chrome(driverLocation)
+            chromedriver = "C:\\Users\\CurtA\\selenium\\chromedriver.exe"
+            os.environ["webdriver.chrome.driver"] = chromedriver
+            driver = webdriver.Chrome(chromedriver)
+            #driver.set_window_size(1440, 900)
         else:
             driver = webdriver.Firefox()
         # Setting Driver Implicit Time out for An Element

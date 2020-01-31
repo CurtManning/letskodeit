@@ -1,5 +1,5 @@
 import utilities.custom_logger as cl
-
+from pages.home.navigation_page import NavigationPage
 import logging
 from base.basepage import BasePage
 
@@ -10,6 +10,7 @@ class LoginPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
+        self.nav = NavigationPage(driver)
 
     # Locators
     _login_link = "Login"
@@ -31,13 +32,12 @@ class LoginPage(BasePage):
 
     def login(self, email="", password=""):
         self.clickLoginLink()
-        self.clearLoginFields()
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
 
     def verifyLoginSuccessful(self):
-        result = self.isElementPresent("//div[@id='navbar']//img[@class='gravatar']",
+        result = self.isElementPresent("//div[@id='navbar']//li[@class='dropdown']",
                                        locatorType="xpath")
         return result
 
@@ -46,17 +46,11 @@ class LoginPage(BasePage):
                                        locatorType="xpath")
         return result
 
-    def clearLoginFields(self):
-        # emailField = self.getElement(locator=self._email_field)
-        # emailField.clear()
-        self.clearField(locator=self._password_field)
-        self.clearField(locator=self._password_field)
-        # passwordField = self.getElement(locator=self._password_field)
-        # passwordField.clear()
-
     def verifyLoginTitle(self):
-        title = "Google"
-        # title = "Let's Kode It"
-        return self.getTitle(title)
+        return self.verifyPageTitle("Let's Kode It")
 
-
+    def logout(self):
+        self.nav.navigateToUserSettings()
+        logoutLinkElement = self.waitForElement(locator="//div[@id='navbar']//a[@href='/sign_out']",
+                          locatorType="xpath", pollFrequency=1)
+        self.elementClick(element=logoutLinkElement)
