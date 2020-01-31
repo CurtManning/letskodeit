@@ -1,9 +1,9 @@
 from pages.courses.register_courses_page import RegisterCoursesPage
 from pages.home.navigation_page import NavigationPage
 from utilities.tststatus import TstStatus
+from utilities.read_data import getCSVData
 import unittest, pytest
 from ddt import ddt, data, unpack
-from utilities.read_data import getCSVData
 import time
 
 @pytest.mark.usefixtures("oneTimeSetUp", "setUp")

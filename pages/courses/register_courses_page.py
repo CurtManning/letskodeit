@@ -45,22 +45,22 @@ class RegisterCoursesPage(BasePage):
         self.elementClick(locator=self._enroll_button)
 
     def enterCardNum(self, num):
-        self.switchToFrame(name="__privateStripeFrame8")
+        self.switchToFrame(name="__privateStripeFrame5")
         self.sendKeys(num, locator=self._cc_num, locatorType="xpath")
         self.switchToDefaultContent()
 
     def enterCardExp(self, exp):
-        self.switchToFrame(name="__privateStripeFrame9")
+        self.switchToFrame(name="__privateStripeFrame6")
         self.sendKeys(exp, locator=self._cc_exp, locatorType="name")
         self.switchToDefaultContent()
 
     def enterCardCVV(self, cvv):
-        self.switchToFrame(name="__privateStripeFrame10")
+        self.switchToFrame(name="__privateStripeFrame7")
         self.sendKeys(cvv, locator=self._cc_cvv, locatorType="name")
         self.switchToDefaultContent()
 
     def enterZip(self, zip):
-        self.switchToFrame(name="__privateStripeFrame11")
+        self.switchToFrame(name="__privateStripeFrame8")
         self.sendKeys(zip, locator=self._zip, locatorType="name")
         self.switchToDefaultContent()
 

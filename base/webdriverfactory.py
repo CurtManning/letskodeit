@@ -44,10 +44,10 @@ class WebDriverFactory():
             # Set ie driver
             driver = webdriver.Ie()
         elif self.browser == "firefox":
-            driver = webdriver.Firefox(executable_path="C:\\Users\\CurtA\\selenium\\geckodriver.exe")
+            driver = webdriver.Firefox(executable_path="C:\\Users\\curtmanning\\selenium\\geckodriver.exe")
         elif self.browser == "chrome":
             # Set chrome driver
-            driverLocation = "C:\\Users\\CurtA\\selenium\\chromedriver.exe"
+            driverLocation = "C:\\Users\\curtmanning\\selenium\\chromedriver.exe"
             os.environ["webdriver.chrome.driver"] = driverLocation
             driver = webdriver.Chrome(driverLocation)
         else:
