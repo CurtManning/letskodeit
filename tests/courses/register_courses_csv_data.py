@@ -9,6 +9,10 @@ import time
 @pytest.mark.usefixtures("oneTimeSetUp", "setUp")
 @ddt
 class RegisterCoursesCSVDataTests(unittest.TestCase):
+    """
+    py.test -v -s tests/courses/register_courses_csv_data.py --browser firefox
+
+    """
 
     @pytest.fixture(autouse=True)
     def objectSetup(self, oneTimeSetUp):
