@@ -26,13 +26,14 @@ class RegisterCoursesCSVDataTests(unittest.TestCase):
     @pytest.mark.run(order=1)
     @data(*getCSVData("testdata.csv"))
     @unpack
-    def test_invalidEnrollment(self, courseName, ccNum, ccExp, ccCVV):
+    def test_invalidEnrollment(self, courseName, ccNum, ccExp, ccCVV, ccZip):
         self.courses.enterCourseName(courseName)
         time.sleep(1)
         self.courses.selectCourseToEnroll(courseName)
         time.sleep(1)
-        self.courses.enrollCourse(num=ccNum, exp=ccExp, cvv=ccCVV)
+        self.courses.enrollCourse(num=ccNum, exp=ccExp, cvv=ccCVV, zip=ccZip)
         time.sleep(1)
         result = self.courses.verifyEnrollFailed()
+        self.driver.back()
         self.ts.markFinal("test_invalidEnrollment", result,
                           "Enrollment Failed Verification")
