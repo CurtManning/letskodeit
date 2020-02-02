@@ -76,6 +76,11 @@ class RegisterCoursesPage(BasePage):
         self.clickAgreeToTermsCheckbox()
 
     def verifyEnrollFailed(self):
+        """
+        verify enroll failed
+        
+        :return:
+        """
         result = self.isEnabled(locator=self.cfg.get("locators", "submit_enroll"), locatorType="xpath",
                                 info="Enroll Button")
         return not result
