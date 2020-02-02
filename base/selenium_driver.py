@@ -18,6 +18,9 @@ class SeleniumDriver():
     def screenShot(self, resultMessage):
         """
         Takes screenshot of the current open web page
+
+        :param resultMessage:
+        :return:
         """
         fileName = resultMessage + "." + str(round(time.time() * 1000)) + ".png"
         screenshotDirectory = "../screenshots/"
@@ -36,9 +39,20 @@ class SeleniumDriver():
             print_stack()
 
     def getTitle(self):
+        """
+        Get Title
+
+        :return:
+        """
         return self.driver.title
 
     def getByType(self, locatorType):
+        """
+        Get By Type
+
+        :param locatorType:
+        :return:
+        """
         locatorType = locatorType.lower()
         if locatorType == "id":
             return By.ID
@@ -58,6 +72,13 @@ class SeleniumDriver():
         return False
 
     def getElement(self, locator, locatorType="id"):
+        """
+        Get Element
+
+        :param locator:
+        :param locatorType:
+        :return:
+        """
         element = None
         try:
             locatorType = locatorType.lower()
@@ -73,6 +94,10 @@ class SeleniumDriver():
     def getElementList(self, locator, locatorType="id"):
         """
         Get list of elements
+
+        :param locator:
+        :param locatorType:
+        :return:
         """
         locatorType = locatorType.lower()
         byType = self.getByType(locatorType)
@@ -89,6 +114,11 @@ class SeleniumDriver():
         """
         Click on an element -> MODIFIED
         Either provide element or a combination of locator and locatorType
+
+        :param locator:
+        :param locatorType:
+        :param element:
+        :return:
         """
         try:
             if locator:  # This means if locator is not empty
@@ -116,15 +146,6 @@ class SeleniumDriver():
             self.log.info("Cannot send data on the element with locator: " + locator +
                   " locatorType: " + locatorType)
             print_stack()
-
-    def clearField(self, locator="", locatorType="id"):
-        """
-        Clear an element field
-        """
-        element = self.getElement(locator, locatorType)
-        element.clear()
-        self.log.info("Clear field with locator: " + locator +
-                      " locatorType: " + locatorType)
 
     def getText(self, locator="", locatorType="id", element=None, info=""):
         """
@@ -208,6 +229,15 @@ class SeleniumDriver():
 
     def waitForElement(self, locator, locatorType="id",
                                timeout=10, pollFrequency=0.5):
+        """
+        Wait for Element
+
+        :param locator:
+        :param locatorType:
+        :param timeout:
+        :param pollFrequency:
+        :return:
+        """
         element = None
         try:
             byType = self.getByType(locatorType)
@@ -227,8 +257,12 @@ class SeleniumDriver():
 
     def webScroll(self, direction="up"):
         """
-        NEW METHOD
+        Web Scroll
+
+        :param direction: Up or down
+        :return:
         """
+
         if direction == "up":
             # Scroll Up
             self.driver.execute_script("window.scrollBy(0, -800);")

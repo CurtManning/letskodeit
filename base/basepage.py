@@ -41,3 +41,15 @@ class BasePage(SeleniumDriver):
             self.log.error("Failed to get page title")
             print_stack()
             return False
+
+    def clearField(self, locator="", locatorType="id"):
+        """
+        Clear an element field
+        :param locator:
+        :param locatorType:
+        :return:
+        """
+        element = self.getElement(locator, locatorType)
+        element.clear()
+        self.log.info("Clear field with locator: " + locator +
+                      " locatorType: " + locatorType)
