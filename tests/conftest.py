@@ -11,19 +11,21 @@ def setUp():
 
 
 @pytest.yield_fixture(scope="class")
-def oneTimeSetUp(request, browser):
+def oneTimeSetUp(request, browser, bitConfig):
     print("Running one time setUp")
     cfg = ConfigParser()
-    cfg.read('courses.ini')
-    print('Sections in the file:', cfg.sections())
+    cfg.read('config.ini')
+    print("Sections in the file:" + str(cfg.sections()))
+    print("BitConfig:" + str(bitConfig))
     # print('Sections in the file:', str(config))
-    wdf = WebDriverFactory(browser)
+    wdf = WebDriverFactory(browser, cfg, bitConfig)
     driver = wdf.getWebDriverInstance()
-    lp = LoginPage(driver)
-    lp.login(cfg.get("credentials", "user_id"), cfg.get("credentials", "user_password"))
+    lp = LoginPage(driver, cfg)
+    lp.login()
 
     if request.cls is not None:
         request.cls.driver = driver
+        request.cls.cfg = cfg
     yield driver
     driver.quit()
     print("Running one time tearDown")
@@ -31,6 +33,7 @@ def oneTimeSetUp(request, browser):
 def pytest_addoption(parser):
     parser.addoption("--browser")
     parser.addoption("--osType", help="Type of operating system")
+    parser.addoption("--bitConfig", help="Bit Configuration")
 
 @pytest.fixture(scope="session")
 def browser(request):
@@ -39,3 +42,7 @@ def browser(request):
 @pytest.fixture(scope="session")
 def osType(request):
     return request.config.getoption("--osType")
+
+@pytest.fixture(scope="session")
+def bitConfig(request):
+    return request.config.getoption("--bitConfig")

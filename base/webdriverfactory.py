@@ -14,7 +14,7 @@ from selenium import webdriver
 
 class WebDriverFactory():
 
-    def __init__(self, browser):
+    def __init__(self, browser, cfg, bitConfig):
         """
         Inits WebDriverFactory class
 
@@ -22,6 +22,9 @@ class WebDriverFactory():
             None
         """
         self.browser = browser
+        self.cfg = cfg
+        self.bitConfig = bitConfig
+        self
     """
         Set chrome driver and iexplorer environment based on OS
 
@@ -39,6 +42,8 @@ class WebDriverFactory():
         Returns:
             'WebDriver Instance'
         """
+        print('getWebDriverInstance -> Sections in the file:', self.cfg.sections())
+        print('getWebDriverInstance -> BitConfig:', str(self.bitConfig))
         baseURL = "https://letskodeit.teachable.com/"
         if self.browser == "iexplorer":
             # Set ie driver

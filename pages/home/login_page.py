@@ -7,10 +7,14 @@ class LoginPage(BasePage):
 
     log = cl.customLogger(logging.DEBUG)
 
-    def __init__(self, driver):
+    def __init__(self, driver, cfg):
         super().__init__(driver)
         self.driver = driver
-        self.nav = NavigationPage(driver)
+        self.cfg = cfg
+        self.nav = NavigationPage(driver, cfg)
+
+        self.user_id = self.cfg.get("credentials", "user_id")
+        self.user_password = self.cfg.get("credentials", "user_password")
 
     # Locators
     _login_link = "Login"
@@ -21,19 +25,19 @@ class LoginPage(BasePage):
     def clickLoginLink(self):
         self.elementClick(self._login_link, locatorType="link")
 
-    def enterEmail(self, email):
-        self.sendKeys(email, self._email_field)
+    def enterEmail(self):
+        self.sendKeys(self.user_id, self._email_field)
 
-    def enterPassword(self, password):
-        self.sendKeys(password, self._password_field)
+    def enterPassword(self):
+        self.sendKeys(self.user_password, self._password_field)
 
     def clickLoginButton(self):
         self.elementClick(self._login_button, locatorType="name")
 
-    def login(self, email="", password=""):
+    def login(self):
         self.clickLoginLink()
-        self.enterEmail(email)
-        self.enterPassword(password)
+        self.enterEmail()
+        self.enterPassword()
         self.clickLoginButton()
 
     def verifyLoginSuccessful(self):

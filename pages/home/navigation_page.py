@@ -7,9 +7,10 @@ from base.basepage import BasePage
 class NavigationPage(BasePage):
     log = cl.customLogger(logging.DEBUG)
 
-    def __init__(self, driver):
+    def __init__(self, driver, cfg):
         super().__init__(driver)
         self.driver = driver
+        self.cfg = cfg
 
     # Locators
     _my_courses = "//a[contains(text(),'My Courses')]"

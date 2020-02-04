@@ -10,14 +10,14 @@ import time
 @ddt
 class RegisterCoursesCSVDataTests(unittest.TestCase):
     """
-    py.test -v -s tests/courses/register_courses_csv_data.py --browser firefox
+    py.test -v -s tests/courses/register_courses_csv_data.py --browser firefox --bitConfig 15
 
     """
     @pytest.fixture(autouse=True)
     def objectSetup(self, oneTimeSetUp):
-        self.courses = RegisterCoursesPage(self.driver)
+        self.courses = RegisterCoursesPage(self.driver, self.cfg)
         self.ts = TstStatus(self.driver)
-        self.nav = NavigationPage(self.driver)
+        self.nav = NavigationPage(self.driver, self.cfg)
 
     def setUp(self):
         self.nav.navigateToAllCourses()
