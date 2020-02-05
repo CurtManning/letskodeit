@@ -24,7 +24,6 @@ class WebDriverFactory():
         self.browser = browser
         self.cfg = cfg
         self.bitConfig = bitConfig
-        self
     """
         Set chrome driver and iexplorer environment based on OS
 
