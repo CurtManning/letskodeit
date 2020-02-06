@@ -48,10 +48,10 @@ class WebDriverFactory():
             # Set ie driver
             driver = webdriver.Ie()
         elif self.browser == "firefox":
-            driver = webdriver.Firefox(executable_path="C:\\Users\\CurtA\\selenium\\geckodriver.exe")
+            driver = webdriver.Firefox(executable_path="C:\\Users\\curtmanning\\selenium\\geckodriver.exe")
         elif self.browser == "chrome":
             # Set chrome driver
-            chromedriver = "C:\\Users\\CurtA\\selenium\\chromedriver.exe"
+            chromedriver = "C:\\Users\\curtmanning\\selenium\\chromedriver.exe"
             os.environ["webdriver.chrome.driver"] = chromedriver
             driver = webdriver.Chrome(chromedriver)
             #driver.set_window_size(1440, 900)
