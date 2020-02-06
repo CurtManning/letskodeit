@@ -11,8 +11,13 @@ Example:
 import os
 import traceback
 from selenium import webdriver
+from utilities.bit_config import Config
+import utilities.custom_logger as cl
+import logging
 
 class WebDriverFactory():
+
+    log = cl.customLogger(logging.DEBUG)
 
     def __init__(self, browser, cfg, bitConfig):
         """
@@ -24,6 +29,7 @@ class WebDriverFactory():
         self.browser = browser
         self.cfg = cfg
         self.bitConfig = bitConfig
+        self.config = Config()
     """
         Set chrome driver and iexplorer environment based on OS
 
@@ -43,7 +49,20 @@ class WebDriverFactory():
         """
         print('getWebDriverInstance -> Sections in the file:', self.cfg.sections())
         print('getWebDriverInstance -> BitConfig:', str(self.bitConfig))
-        baseURL = "https://letskodeit.teachable.com/"
+
+        if self.config.prod(self.bitConfig):
+            self.log.info("Bit Config = Prod")
+            print("Bit Config = Prod")
+            baseUrl = "https://letskodeit.teachable.com/"
+        elif self.config.staging(self.bitConfig):
+            self.log.info("Bit Config = Staging")
+            print("Bit Config = Staging")
+            baseUrl = "https://letskodeit.teachable.com/"
+        else:
+            print("Bit Config = OTHER")
+            self.log.info("Bit Config = OTHER")
+            baseUrl = "https://letskodeit.teachable.com/"
+
         if self.browser == "iexplorer":
             # Set ie driver
             driver = webdriver.Ie()
@@ -62,5 +81,5 @@ class WebDriverFactory():
         # Maximize the window
         driver.maximize_window()
         # Loading browser with App URL
-        driver.get(baseURL)
+        driver.get(baseUrl)
         return driver
