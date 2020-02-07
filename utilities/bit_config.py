@@ -621,7 +621,7 @@ class Config:
         """
         get suite flag number
         """
-        self.log.info("get_suite_flag_number")
+        self.log.info("get_suite_flag_number = " + str(self.suiteFlagNumber))
         return self.suiteFlagNumber
 
     # Checking the flag - To test the value of a flag, use bitwise AND:
@@ -630,7 +630,6 @@ class Config:
         prod
         Check flag - bitwise AND
         """
-        self.log.info("prod")
         return _flagNumber & self.FLAG_Prod == self.FLAG_Prod
 
     def staging(self, _flagNumber):
@@ -638,7 +637,6 @@ class Config:
         staging
         Check flag - bitwise AND
         """
-        self.log.info("staging")
         return _flagNumber & self.FLAG_Staging == self.FLAG_Staging
 
     def email(self, _flagNumber):
@@ -646,7 +644,6 @@ class Config:
         email
         Check flag - bitwise AND
         """
-        self.log.info("email")
         return _flagNumber & self.FLAG_Email == self.FLAG_Email
 
     def chrome(self, _flagNumber):
@@ -654,7 +651,6 @@ class Config:
         chrome
         Check flag - bitwise AND
         """
-        self.log.info("chrome")
         return _flagNumber & self.FLAG_Chrome == self.FLAG_Chrome
 
     def firefox(self, _flagNumber):
@@ -662,7 +658,6 @@ class Config:
         firefox
         Check flag - bitwise AND
         """
-        self.log.info("firefox")
         return _flagNumber & self.FLAG_Firefox == self.FLAG_Firefox
 
     def edge(self, _flagNumber):
@@ -670,7 +665,6 @@ class Config:
         edge
         Check flag - bitwise AND
         """
-        self.log.info("edge")
         return _flagNumber & self.FLAG_Edge == self.FLAG_Edge
 
     def safari(self, _flagNumber):
@@ -678,7 +672,6 @@ class Config:
         safari
         Check flag - bitwise AND
         """
-        self.log.info("safari")
         return _flagNumber & self.FLAG_Safari == self.FLAG_Safari
 
     def android(self, _flagNumber):
@@ -686,7 +679,6 @@ class Config:
         android
         Check flag - bitwise AND
         """
-        self.log.info("android")
         return _flagNumber & self.FLAG_Android == self.FLAG_Android
 
     def ios(self, _flagNumber):
@@ -694,7 +686,6 @@ class Config:
         ios
         Check flag - bitwise AND
         """
-        self.log.info("ios")
         return _flagNumber & self.FLAG_Ios == self.FLAG_Ios
 
     def suite(self, _flagNumber):
@@ -702,7 +693,6 @@ class Config:
         suite
         Check flag - bitwise AND
         """
-        self.log.info("suite")
         return _flagNumber & self.FLAG_Suite == self.FLAG_Suite
 
     def mobileapp(self, _flagNumber):
@@ -710,7 +700,6 @@ class Config:
         mobileapp
         Check flag - bitwise AND
         """
-        self.log.info("mobileapp")
         return _flagNumber & self.FLAG_MobileApp == self.FLAG_MobileApp
 
     def cloud(self, _flagNumber):
@@ -718,7 +707,6 @@ class Config:
         cloud
         Check flag - bitwise AND
         """
-        self.log.info("cloud")
         return _flagNumber & self.FLAG_Cloud == self.FLAG_Cloud
 
     def grid(self, _flagNumber):
@@ -726,7 +714,6 @@ class Config:
         grid
         Check flag - bitwise AND
         """
-        self.log.info("grid")
         return _flagNumber & self.FLAG_Grid == self.FLAG_Grid
 
     def local(self, _flagNumber):
@@ -734,7 +721,6 @@ class Config:
         local
         Check flag - bitwise AND
         """
-        self.log.info("local")
         return _flagNumber & self.FLAG_Local == self.FLAG_Local
 
     def check_suite_prod(self):
@@ -742,7 +728,6 @@ class Config:
         check suite prod
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_prod")
         return self.suiteFlagNumber & self.FLAG_Prod == self.FLAG_Prod
 
     def check_suite_staging(self):
@@ -750,7 +735,6 @@ class Config:
         check suite staging
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_staging")
         return self.suiteFlagNumber & self.FLAG_Staging == self.FLAG_Staging
 
     def check_suite_email(self):
@@ -758,7 +742,6 @@ class Config:
         check suite email
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_email")
         return self.suiteFlagNumber & self.FLAG_Email == self.FLAG_Email
 
     def check_suite_chrome(self):
@@ -766,7 +749,6 @@ class Config:
         check suite chrome
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_chrome")
         return self.suiteFlagNumber & self.FLAG_Chrome == self.FLAG_Chrome
 
     def check_suite_firefox(self):
@@ -774,7 +756,6 @@ class Config:
         check suite firefox
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_firefox")
         return self.suiteFlagNumber & self.FLAG_Firefox == self.FLAG_Firefox
 
     def check_suite_edge(self):
@@ -782,7 +763,6 @@ class Config:
         check suite edge
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_edge")
         return self.suiteFlagNumber & self.FLAG_Edge == self.FLAG_Edge
 
     def check_suite_safari(self):
@@ -790,7 +770,6 @@ class Config:
         check suite safari
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_safari")
         return self.suiteFlagNumber & self.FLAG_Safari == self.FLAG_Safari
 
     def check_suite_android(self):
@@ -798,7 +777,6 @@ class Config:
         check suite android
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_android")
         return self.suiteFlagNumber & self.FLAG_Android == self.FLAG_Android
 
     def check_suite_ios(self):
@@ -806,7 +784,6 @@ class Config:
         check suite ios
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_ios")
         return self.suiteFlagNumber & self.FLAG_Ios == self.FLAG_Ios
 
     def check_suite_suite(self):
@@ -814,7 +791,6 @@ class Config:
         check suite suite
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_suite")
         return self.suiteFlagNumber & self.FLAG_Suite == self.FLAG_Suite
 
     def check_suite_mobileapp(self):
@@ -822,7 +798,6 @@ class Config:
         check suite mobileapp
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_mobileapp")
         return self.suiteFlagNumber & self.FLAG_MobileApp == self.FLAG_MobileApp
 
     def check_suite_cloud(self):
@@ -830,7 +805,6 @@ class Config:
         check suite cloud
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_cloud")
         return self.suiteFlagNumber & self.FLAG_Cloud == self.FLAG_Cloud
 
     def check_suite_grid(self):
@@ -838,7 +812,6 @@ class Config:
         check suite grid
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_grid")
         return self.suiteFlagNumber & self.FLAG_Grid == self.FLAG_Grid
 
     def check_suite_local(self):
@@ -846,7 +819,6 @@ class Config:
         check suite local
         Check flag - bitwise AND
         """
-        self.log.info("check_suite_local")
         return self.suiteFlagNumber & self.FLAG_Local == self.FLAG_Local
 
     #################
