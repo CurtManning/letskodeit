@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install pytest
           pip install -r requirements.txt
       - name: Lint with flake8
         run: |
@@ -34,4 +35,4 @@ jobs:
           CBT_USERNAME: ${{ secrets.CBT_USERNAME }}
           CBT_AUTHKEY: ${{ secrets.CBT_AUTHKEY }}
         run: |
-          py.test tests/home/test_suite_demo.py --browser firefox --bitConfig = 2
+          python py.test tests/home/test_suite_demo.py --browser firefox --bitConfig = 2
