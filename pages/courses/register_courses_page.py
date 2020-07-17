@@ -12,10 +12,11 @@ class RegisterCoursesPage(BasePage):
     """
     log = cl.customLogger(logging.DEBUG)
 
-    def __init__(self, driver, cfg):
+    def __init__(self, driver, cfg, bitConfig):
         super().__init__(driver)
         self.driver = driver
         self.cfg = cfg
+        self.bitConfig = int(bitConfig)
 
     ############################
     ### Element Interactions ###
