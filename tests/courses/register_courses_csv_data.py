@@ -10,7 +10,7 @@ import time
 @ddt
 class RegisterCoursesCSVDataTests(unittest.TestCase):
     """
-    py.test -v -s tests/courses/register_courses_csv_data.py --browser firefox --bitConfig 15 --html=htmlreport.html
+    
 
     To run html reports verify pytest-html is installed. If is not installed, from the terminal type : pip3 install pytest-html
 
