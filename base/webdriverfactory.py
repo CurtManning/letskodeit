@@ -46,7 +46,6 @@ class WebDriverFactory():
         chromedriver = "C:/.../chromedriver.exe"
         os.environ["webdriver.chrome.driver"] = chromedriver
         self.driver = webdriver.Chrome(chromedriver)
-
         PREFERRED: Set the path on the machine where browser will be executed
     """
 
