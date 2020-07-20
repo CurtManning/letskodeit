@@ -10,6 +10,7 @@ Example:
 """
 import os
 import traceback
+import requests
 from selenium import webdriver
 from utilities.bit_config import Config
 import utilities.custom_logger as cl
