@@ -78,6 +78,7 @@ class WebDriverFactory():
         driver.implicitly_wait(3)
         # Maximize the window
         driver.maximize_window()
+        baseUrl = "https://letskodeit.teachable.com/"
         # Loading browser with App URL
         driver.get(baseUrl)
         return driver
