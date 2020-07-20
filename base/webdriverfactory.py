@@ -37,6 +37,8 @@ class WebDriverFactory():
 
         self.api_session = requests.Session()
         self.api_session.auth = (self.username, self.authkey)
+
+
     """
         Set chrome driver and iexplorer environment based on OS
 
@@ -55,6 +57,17 @@ class WebDriverFactory():
             'WebDriver Instance'
         """
         # start the remote browser on our server
+        caps = {}
+
+        caps['name'] = 'Login Form Example'
+        caps['build'] = '1.0'
+        caps['browserName'] = 'Chrome'
+        caps['version'] = '72'
+        caps['platform'] = 'Windows 10'
+        caps['screenResolution'] = '1366x768'
+        caps['record_video'] = 'true'
+        caps['record_network'] = 'false'
+
         driver = webdriver.Remote(
             desired_capabilities=caps,
             command_executor="http://%s:%s@hub.crossbrowsertesting.com:80/wd/hub"%(self.username,self.authkey)
