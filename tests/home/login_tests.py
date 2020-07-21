@@ -9,7 +9,7 @@ class LoginTests(unittest.TestCase):
     """
 
     Make sure Install pytest-ordering and pytest in system terminal using the pip command.
-
+    pip install requests
     py.test -v -s tests/home/login_tests.py --browser firefox
     py.test -v -s tests/home/login_tests.py --browser chrome
 
