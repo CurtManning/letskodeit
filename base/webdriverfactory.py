@@ -51,7 +51,7 @@ class WebDriverFactory():
 
     def getWebDriverInstance(self):
         """
-       Get WebDriver Instance based on the browser configuration
+        Get WebDriver Instance based on the browser configuration
 
         Returns:
             'WebDriver Instance'
