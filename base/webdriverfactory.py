@@ -9,15 +9,15 @@ Example:
     wdf.getWebDriverInstance()
 """
 import os
-import traceback
 import requests
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from utilities.bit_config import Config
 import utilities.custom_logger as cl
 import logging
 
-class WebDriverFactory():
 
+class WebDriverFactory():
     log = cl.customLogger(logging.DEBUG)
 
     def __init__(self, browser, cfg, bitConfig):
@@ -39,7 +39,6 @@ class WebDriverFactory():
         self.api_session = requests.Session()
         self.api_session.auth = (self.username, self.authkey)
 
-
     """
         Set chrome driver and iexplorer environment based on OS
 
@@ -57,21 +56,14 @@ class WebDriverFactory():
             'WebDriver Instance'
         """
         # start the remote browser on our server
-        caps = {}
+        driverLocation = "/home/runner/work/qa_test_tutorial/qa_test_tutorial/drivers/linux/chromedriver"
+        os.environ["webdriver.chrome.driver"] = driverLocation
 
-        caps['name'] = 'Login Form Example'
-        caps['build'] = '1.0'
-        caps['browserName'] = 'Chrome'
-        caps['version'] = '72'
-        caps['platform'] = 'Windows 10'
-        caps['screenResolution'] = '1366x768'
-        caps['record_video'] = 'true'
-        caps['record_network'] = 'false'
-
-        driver = webdriver.Remote(
-            desired_capabilities=caps,
-            command_executor="http://%s:%s@hub.crossbrowsertesting.com:80/wd/hub"%(self.username,self.authkey)
-        )
+        options = Options()
+        options.add_argument("--no-sandbox")  # bypass OS security model
+        options.add_argument("--disable-dev-shm-usage")  # overcome limited resource problems
+        options.add_argument("--headless")  # overcome limited resource problems
+        driver = webdriver.Chrome(options=options, executable_path=driverLocation)
 
         # Setting Driver Implicit Time out for An Element
         driver.implicitly_wait(3)
