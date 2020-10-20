@@ -41,6 +41,7 @@ class WebDriverFactory():
 
     """
         Set chrome driver and iexplorer environment based on OS
+        
         chromedriver = "C:/.../chromedriver.exe"
         os.environ["webdriver.chrome.driver"] = chromedriver
         self.driver = webdriver.Chrome(chromedriver)
